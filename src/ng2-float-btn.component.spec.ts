@@ -19,10 +19,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   }));
 
-  it('should render hello world in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(Ng2FloatBtnComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Hello World!!');
-  }));
+  // it('should render hello world in a h1 tag', async(() => {
+  //   const fixture = TestBed.createComponent(Ng2FloatBtnComponent);
+  //   fixture.detectChanges();
+  //   const compiled = fixture.debugElement.nativeElement;
+  //   expect(compiled.querySelector('h1').textContent).toContain('Hello World!!');
+  // }));
 });
