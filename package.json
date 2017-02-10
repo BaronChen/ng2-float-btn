@@ -2,7 +2,7 @@
   "name": "ng2-lib-template",
   "version": "0.0.1",
   "description": "",
-  "main": "dist/test-lib.umd.js",
+  "main": "dist/ng2-float-btn.umd.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {

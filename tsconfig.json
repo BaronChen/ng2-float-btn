@@ -22,7 +22,7 @@
     "outDir": "dist",
     "baseUrl": "src",
     "paths": {
-      "test-lib": ["./index"]
+      "ng2-float-btn": ["./index"]
     }
   },
   "files": [

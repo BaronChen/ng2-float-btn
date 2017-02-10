@@ -1,18 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { TestLibComponent } from './test-lib.component';
+import { Ng2FloatBtnComponent } from './ng2-float-btn.component';
 
 
 @NgModule({
   declarations: [
-    TestLibComponent
+    Ng2FloatBtnComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
   providers: [],
-  exports: [ TestLibComponent ]
+  exports: [ Ng2FloatBtnComponent ]
 })
-export class TestLibModule { }
+export class Ng2FloatBtnModule { }

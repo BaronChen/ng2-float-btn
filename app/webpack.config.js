@@ -4,7 +4,7 @@ const config = {
   resolve: {
     extensions: ['.ts', '.webpack.js', '.web.js', '.js'],
     alias: {
-      'test-lib': '../src/index.ts'
+      'ng2-float-btn': '../src/index.ts'
     }
   },
   devtool: 'source-map',

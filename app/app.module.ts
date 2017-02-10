@@ -4,10 +4,10 @@ import { FormsModule } from "@angular/forms"
 
 import { AppComponent } from './app.component';
 
-import { TestLibModule } from '../src'
+import { Ng2FloatBtnModule } from '../src'
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, TestLibModule],
+    imports: [BrowserModule, FormsModule, Ng2FloatBtnModule],
     declarations: [AppComponent],
     providers: [],
     bootstrap: [AppComponent]
