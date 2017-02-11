@@ -15,7 +15,7 @@
     "build:umd": "cross-env NODE_ENV=production webpack",
     "build:app": "cross-env webpack --config app/webpack.config"
   },
-  "author": "",
+  "author": "baron Chen",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {

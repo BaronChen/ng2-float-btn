@@ -11,6 +11,8 @@ import {
 
 import { Ng2FloatBtn } from './models';
 
+type BtnAnimateState = ('void' | 'right-show' | 'left-show' | 'up-show' | 'down-show');
+
 @Component({
 	selector: 'ng2-float-btn',
 	styles: [
@@ -27,67 +29,52 @@ import { Ng2FloatBtn } from './models';
 	],
 	animations: [
 		trigger(
-			'rightAnimation',
+			'buttonAnimation',
 			[
 				transition(
-					':enter', [
+					'void => right-show', [
 						style({ transform: 'translateX(-100%) scale(0.5)', opacity: 0 }),
 						animate('400ms ease-out', style({ transform: 'translateX(0) scale(1)', opacity: 1 }))
 					]
 				),
 				transition(
-					':leave', [
+					'right-show => void', [
 						style({ transform: 'translateX(0) scale(1)', 'opacity': 1 }),
 						animate('400ms ease-in', style({ transform: 'translateX(-100%) scale(0.5)', opacity: 0 }))
 					]
-				)
-			]
-		),
-		trigger(
-			'leftAnimation',
-			[
+				),
 				transition(
-					':enter', [
+					'void => left-show', [
 						style({ transform: 'translateX(100%) scale(0.5)', opacity: 0 }),
 						animate('400ms ease-out', style({ transform: 'translateX(0) scale(1)', opacity: 1 }))
 					]
 				),
 				transition(
-					':leave', [
+					'left-show => void', [
 						style({ transform: 'translateX(0) scale(1)', 'opacity': 1 }),
 						animate('400ms ease-in', style({ transform: 'translateX(100%) scale(0.5)', opacity: 0 }))
 					]
-				)
-			]
-		),
-		trigger(
-			'downAnimation',
-			[
+				),
 				transition(
-					':enter', [
+					'void => down-show', [
 						style({ transform: 'translateY(-100%) scale(0.5)', opacity: 0 }),
 						animate('400ms ease-out', style({ transform: 'translateY(0) scale(1)', opacity: 1 }))
 					]
 				),
 				transition(
-					':leave', [
+					'down-show => void', [
 						style({ transform: 'translateY(0) scale(1)', 'opacity': 1 }),
 						animate('400ms ease-in', style({ transform: 'translateY(-100%) scale(0.5)', opacity: 0 }))
 					]
-				)
-			]
-		),
-		trigger(
-			'upAnimation',
-			[
+				),
 				transition(
-					':enter', [
+					'void => up-show', [
 						style({ transform: 'translateY(100%) scale(0.5)', opacity: 0 }),
 						animate('400ms ease-out', style({ transform: 'translateY(0) scale(1)', opacity: 1 }))
 					]
 				),
 				transition(
-					':leave', [
+					'up-show => void', [
 						style({ transform: 'translateY(0) scale(1)', 'opacity': 1 }),
 						animate('400ms ease-in', style({ transform: 'translateY(100%) scale(0.5)', opacity: 0 }))
 					]
@@ -95,45 +82,24 @@ import { Ng2FloatBtn } from './models';
 			]
 		)
 	],
+	//the two hidden button is used to trigger a render of material fab 
+	//so that the buttons with attribute binding will render correctly later
 	template: `
+		<button md-fab style="display: none"></button>
+		<button md-mini-fab style="display: none"></button>
 		<ul ng2-float-btn-direction [btnDirection]="direction">
 			<li>
-				<button md-fab (click)="triggerBtnMenu()">
+				<button [attr.md-fab]="isMini ? null : ''" [attr.md-mini-fab]="isMini ? '' : null"
+						(click)="triggerBtnMenu()">
 					<md-icon>{{mainButton.iconName}}</md-icon>
 				</button>	
 			</li>
 			<li *ngFor="let btn of buttons">
-				<ng-container [ngSwitch]="direction">
-					<ng-container *ngSwitchCase="'right'" >
-						<button md-fab [@rightAnimation]="showBtns" *ngIf="showBtns"
-								(click)="fireAction($event, btn.onClick)">
-								<md-icon>{{btn.iconName}}</md-icon>
-						</button>
-					</ng-container>
-
-					<ng-container *ngSwitchCase="'left'" >
-						<button md-fab [@leftAnimation]="showBtns" *ngIf="showBtns"
-								(click)="fireAction($event, btn.onClick)">
-								<md-icon>{{btn.iconName}}</md-icon>
-						</button>
-					</ng-container>
-					
-					<ng-container *ngSwitchCase="'down'" >
-						<button md-fab [@downAnimation]="showBtns" *ngIf="showBtns"
-								(click)="fireAction($event, btn.onClick)">
-								<md-icon>{{btn.iconName}}</md-icon>
-						</button>
-					</ng-container>
-
-					<ng-container *ngSwitchCase="'up'" >
-						<button md-fab [@upAnimation]="showBtns" *ngIf="showBtns"
-								(click)="fireAction($event, btn.onClick)">
-								<md-icon>{{btn.iconName}}</md-icon>
-						</button>
-					</ng-container>
-				</ng-container>
-			
-				
+				<button [attr.md-fab]="isMini ? null : ''" [attr.md-mini-fab]="isMini ? '' : null"
+						[@buttonAnimation]="animateState" *ngIf="showBtns"
+							(click)="fireAction($event, btn.onClick)">
+							<md-icon>{{btn.iconName}}</md-icon>
+				</button>
 			</li>
 			
 		</ul>
@@ -151,7 +117,12 @@ export class Ng2FloatBtnComponent {
 	@Input()
 	direction: string;
 
+	@Input()
+	isMini: boolean;
+
 	private showBtns: boolean = false;
+
+	private animateState: BtnAnimateState = 'void';
 
 	public constructor() {
 	}
@@ -165,10 +136,36 @@ export class Ng2FloatBtnComponent {
 
 		if (!this.direction || this.direction == '')
 			this.direction = "right";
+
+		if (!this.isMini) {
+			this.isMini = true;
+		}
 	}
 
 	public triggerBtnMenu() {
 		this.showBtns = !this.showBtns;
+
+		if (!this.showBtns) {
+			this.animateState = 'void';
+		} else {
+			switch (this.direction) {
+				case 'right':
+					this.animateState = 'right-show';
+					break;
+				case 'left':
+					this.animateState = 'left-show';
+					break;
+				case 'down':
+					this.animateState = 'down-show';
+					break;
+				case 'up':
+					this.animateState = 'up-show';
+					break;
+				default:
+					throw 'Invalid direction.';
+			}
+		}
+
 	}
 
 	public fireAction($event, action) {
