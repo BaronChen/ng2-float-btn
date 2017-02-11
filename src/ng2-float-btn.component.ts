@@ -141,9 +141,9 @@ export class Ng2FloatBtnComponent {
 	@Input()
 	isMini: boolean;
 
-	private showBtns: boolean = false;
+	public showBtns: boolean = false;
 
-	private animateState: BtnAnimateState = 'void';
+	public animateState: BtnAnimateState = 'void';
 
 	public constructor() {
 	}
