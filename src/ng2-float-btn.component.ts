@@ -11,7 +11,7 @@ import {
 
 import { Ng2FloatBtn } from './models';
 
-type BtnAnimateState = ('void' | 'right-show' | 'left-show' | 'up-show' | 'down-show');
+export type BtnAnimateState = ('void' | 'right-show' | 'left-show' | 'up-show' | 'down-show');
 
 @Component({
 	selector: 'ng2-float-btn',

@@ -14,6 +14,7 @@ var Ng2FloatBtnDirectionDirective = (function () {
         this.el = el;
     }
     Ng2FloatBtnDirectionDirective.prototype.ngOnInit = function () {
+        this.el.nativeElement.style.display = 'inline-flex';
         switch (this.btnDirection) {
             case 'right':
                 this.setJustifyContent('flex-start');
@@ -31,6 +32,7 @@ var Ng2FloatBtnDirectionDirective = (function () {
                 this.setJustifyContent('flex-end');
                 this.setDirection('column-reverse');
                 break;
+            /* istanbul ignore next */
             default:
                 throw 'invalid direction.';
         }

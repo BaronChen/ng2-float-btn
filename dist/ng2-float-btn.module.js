@@ -11,7 +11,10 @@ var forms_1 = require("@angular/forms");
 var material_1 = require("@angular/material");
 var ng2_float_btn_component_1 = require("./ng2-float-btn.component");
 var ng2_float_btn_direction_directive_1 = require("./ng2-float-btn-direction.directive");
+var ng2_float_btn_li_directive_1 = require("./ng2-float-btn-li.directive");
+var ng2_float_btn_label_directive_1 = require("./ng2-float-btn-label.directive");
 var Ng2FloatBtnModule = (function () {
+    /* istanbul ignore next */
     function Ng2FloatBtnModule() {
     }
     return Ng2FloatBtnModule;
@@ -20,7 +23,9 @@ Ng2FloatBtnModule = __decorate([
     core_1.NgModule({
         declarations: [
             ng2_float_btn_component_1.Ng2FloatBtnComponent,
-            ng2_float_btn_direction_directive_1.Ng2FloatBtnDirectionDirective
+            ng2_float_btn_direction_directive_1.Ng2FloatBtnDirectionDirective,
+            ng2_float_btn_li_directive_1.Ng2FloatBtnLiDirective,
+            ng2_float_btn_label_directive_1.Ng2FloatBtnLableDirective
         ],
         imports: [
             platform_browser_1.BrowserModule,
