@@ -6,4 +6,6 @@ export interface Ng2FloatBtn{
 
     onClick? : any;
 
+    label? : string;
+
 }

@@ -42,4 +42,8 @@ export class Ng2FloatBtnDirectionDirective implements OnInit {
         this.el.nativeElement.style.flexDirection = flexDirection;
     }
 
+    private setPosition(position : string){
+        this.el.nativeElement.style.position = position;
+    }    
+
 }

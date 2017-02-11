@@ -21,7 +21,8 @@ type BtnAnimateState = ('void' | 'right-show' | 'left-show' | 'up-show' | 'down-
 			margin: 0; 
 			padding: 0; 
 			overflow: hidden;
-			display:flex;
+			display:inline-flex;
+			z-index: 200;
 		}`,
 		`button {
 			margin: 8px;
@@ -80,6 +81,23 @@ type BtnAnimateState = ('void' | 'right-show' | 'left-show' | 'up-show' | 'down-
 					]
 				)
 			]
+		),
+		trigger(
+			'labelAnimation',
+			[
+				transition(
+					':enter', [
+						style({ transform: 'scale(0.6)', 'opacity': 0 }),
+						animate('100ms 300ms ease', style({ transform:'scale(1)', opacity: 1 }))
+					]
+				),
+				transition(
+					':leave', [
+						style({ transform: 'scale(1)', 'opacity': 1 }),
+						animate('200ms ease-out', style({ transform: 'scale(0.6)', opacity: 0 }))
+					]
+				)
+			]
 		)
 	],
 	//the two hidden button is used to trigger a render of material fab 
@@ -94,12 +112,16 @@ type BtnAnimateState = ('void' | 'right-show' | 'left-show' | 'up-show' | 'down-
 					<md-icon>{{mainButton.iconName}}</md-icon>
 				</button>	
 			</li>
-			<li *ngFor="let btn of buttons">
+			<li *ngFor="let btn of buttons" ng2-float-btn-li>
 				<button [attr.md-fab]="isMini ? null : ''" [attr.md-mini-fab]="isMini ? '' : null"
-						[@buttonAnimation]="animateState" *ngIf="showBtns"
-							(click)="fireAction($event, btn.onClick)">
-							<md-icon>{{btn.iconName}}</md-icon>
+					[@buttonAnimation]="animateState" *ngIf="showBtns"
+					(click)="fireAction($event, btn.onClick)">
+						<md-icon>{{btn.iconName}}</md-icon>
 				</button>
+				<label *ngIf="shouldShowLabel(btn.label) && showBtns" [@labelAnimation]="showBtns"
+						ng2-float-btn-label [isMini]="isMini">
+					{{btn.label}}
+				</label>
 			</li>
 			
 		</ul>
@@ -138,7 +160,7 @@ export class Ng2FloatBtnComponent {
 			this.direction = "right";
 
 		if (!this.isMini) {
-			this.isMini = true;
+			this.isMini = false;
 		}
 	}
 
@@ -169,8 +191,16 @@ export class Ng2FloatBtnComponent {
 	}
 
 	public fireAction($event, action) {
+		this.triggerBtnMenu();
 		if (action)
 			action($event);
+	}
+
+	public shouldShowLabel(title: string) {
+		if (!title || title == '')
+			return false;
+
+		return true;
 	}
 
 }
