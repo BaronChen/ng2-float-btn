@@ -12,6 +12,7 @@ export class Ng2FloatBtnDirectionDirective implements OnInit {
     }
     
     ngOnInit(){
+        this.el.nativeElement.style.display = 'inline-flex';
         switch(this.btnDirection){
             case 'right':
                 this.setJustifyContent('flex-start');
@@ -41,9 +42,4 @@ export class Ng2FloatBtnDirectionDirective implements OnInit {
     private setDirection(flexDirection: string) {
         this.el.nativeElement.style.flexDirection = flexDirection;
     }
-
-    private setPosition(position : string){
-        this.el.nativeElement.style.position = position;
-    }    
-
 }

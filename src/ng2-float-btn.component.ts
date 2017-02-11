@@ -21,7 +21,6 @@ type BtnAnimateState = ('void' | 'right-show' | 'left-show' | 'up-show' | 'down-
 			margin: 0; 
 			padding: 0; 
 			overflow: hidden;
-			display:inline-flex;
 			z-index: 200;
 		}`,
 		`button {
