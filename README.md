@@ -7,8 +7,8 @@ Button group for angular 2 and angular material 2.
 ## Installation
 
 #### Dependecies:
-[Angular 2](https://angular.io/)
-[Angular Material 2](https://material.angular.io/)
+* [Angular 2](https://angular.io/)
+* [Angular Material 2](https://material.angular.io/)
 
 #### Install package
 ```sh
