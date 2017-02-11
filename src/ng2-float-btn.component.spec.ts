@@ -51,8 +51,7 @@ describe('Ng2FloatBtnComponent', () => {
 			iconName: "add",
 			onClick: () => {
 				alert("buton 1 clicked");
-			},
-			label: "button 1"
+			}
 		},
 		{
 			color: "primary",
@@ -133,6 +132,23 @@ describe('Ng2FloatBtnComponent', () => {
 
 		expect(comp.triggerBtnMenu).toHaveBeenCalledTimes(2);
 		expect(comp.showBtns).toBe(false);
+	})
+
+	it('should have only 2 label', () => {
+		const fixture = TestBed.createComponent(Ng2FloatBtnComponent);
+		const comp = fixture.debugElement.componentInstance;
+
+		comp.mainButton = mainButton;
+		comp.buttons = buttons;
+		fixture.detectChanges();
+
+		let mainButtonEls = fixture.debugElement.queryAll(By.css('button'));
+		let mainButtonEl = mainButtonEls[2];
+		mainButtonEl.triggerEventHandler('click', null);
+		fixture.detectChanges();
+
+		let labelsEls =  fixture.debugElement.queryAll(By.css('label'));
+		expect(labelsEls.length).toBe(2);
 	})
 
 	it('should render mini buttons', async(() => {

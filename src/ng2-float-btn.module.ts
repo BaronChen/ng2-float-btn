@@ -24,4 +24,5 @@ import { Ng2FloatBtnLableDirective } from './ng2-float-btn-label.directive';
   providers: [],
   exports: [ Ng2FloatBtnComponent ]
 })
+/* istanbul ignore next */
 export class Ng2FloatBtnModule { }

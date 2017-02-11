@@ -183,8 +183,8 @@ export class Ng2FloatBtnComponent {
 				case 'up':
 					this.animateState = 'up-show';
 					break;
+				/* istanbul ignore next */
 				default:
-					/* istanbul ignore next */
 					throw 'Invalid direction.';
 			}
 		}
@@ -193,6 +193,7 @@ export class Ng2FloatBtnComponent {
 
 	public fireAction($event, action) {
 		this.triggerBtnMenu();
+		/* istanbul ignore else  */
 		if (action)
 			action($event);
 	}

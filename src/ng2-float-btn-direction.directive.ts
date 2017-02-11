@@ -30,8 +30,8 @@ export class Ng2FloatBtnDirectionDirective implements OnInit {
                 this.setJustifyContent('flex-end');
                 this.setDirection('column-reverse');
                 break;
+            /* istanbul ignore next */
             default:
-                /* istanbul ignore next */
                 throw 'invalid direction.'
         }
     }
