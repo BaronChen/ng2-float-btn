@@ -31,6 +31,7 @@ export class Ng2FloatBtnDirectionDirective implements OnInit {
                 this.setDirection('column-reverse');
                 break;
             default:
+                /* istanbul ignore next */
                 throw 'invalid direction.'
         }
     }

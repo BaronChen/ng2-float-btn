@@ -149,12 +149,13 @@ export class Ng2FloatBtnComponent {
 	}
 
 	ngOnInit() {
+		/* istanbul ignore if */
 		if (!this.mainButton)
 			throw "mainButton is required."
-
+		/* istanbul ignore if */
 		if (!this.buttons || this.buttons.length == 0)
 			throw "buttons is required.";
-
+			
 		if (!this.direction || this.direction == '')
 			this.direction = "right";
 
@@ -183,6 +184,7 @@ export class Ng2FloatBtnComponent {
 					this.animateState = 'up-show';
 					break;
 				default:
+					/* istanbul ignore next */
 					throw 'Invalid direction.';
 			}
 		}

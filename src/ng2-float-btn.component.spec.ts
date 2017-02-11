@@ -77,7 +77,6 @@ describe('Ng2FloatBtnComponent', () => {
 
 		comp.mainButton = mainButton;
 		comp.buttons = buttons;
-		comp.direction = "right";
 		fixture.detectChanges();
 
 		spyOn(comp, "triggerBtnMenu").and.callThrough();
@@ -91,13 +90,50 @@ describe('Ng2FloatBtnComponent', () => {
 		fixture.detectChanges();
 
 		expect(comp.triggerBtnMenu).toHaveBeenCalled();
+		expect(comp.showBtns).toBe(true);
 
 		let buttonsEls = fixture.debugElement.queryAll(By.css('button'));
 		expect(buttonsEls.length).toBe(buttons.length + 3);
 		let buttonEl = buttonsEls[buttonsEls.length-1];
 		let iconEl = buttonEl.query(By.css('md-icon'));
 		expect(iconEl.nativeElement.textContent).toBe(buttons[buttons.length - 1].iconName);
+
+		spyOn(buttons[buttons.length - 1], "onClick");
+		buttonEl.triggerEventHandler('click', null);
+		fixture.detectChanges();
+
+		expect(buttons[buttons.length - 1].onClick).toHaveBeenCalled();
+		expect(comp.triggerBtnMenu).toHaveBeenCalledTimes(2);
+		expect(comp.showBtns).toBe(false);
 	}));
+
+	it('should be able to close btn menu', () => {
+		const fixture = TestBed.createComponent(Ng2FloatBtnComponent);
+		const comp = fixture.debugElement.componentInstance;
+
+		comp.mainButton = mainButton;
+		comp.buttons = buttons;
+		fixture.detectChanges();
+
+		spyOn(comp, "triggerBtnMenu").and.callThrough();
+
+		let mainButtonEls = fixture.debugElement.queryAll(By.css('button'));
+		//need to include hidden button
+		expect(mainButtonEls.length).toBe(3);
+		let mainButtonEl = mainButtonEls[2];
+		expect(mainButtonEl.nativeElement.hasAttribute("md-fab")).toBe(true);
+		mainButtonEl.triggerEventHandler('click', null);
+		fixture.detectChanges();
+
+		expect(comp.triggerBtnMenu).toHaveBeenCalled();
+		expect(comp.showBtns).toBe(true);
+
+		mainButtonEl.triggerEventHandler('click', null);
+		fixture.detectChanges();
+
+		expect(comp.triggerBtnMenu).toHaveBeenCalledTimes(2);
+		expect(comp.showBtns).toBe(false);
+	})
 
 	it('should render mini buttons', async(() => {
 		const fixture = TestBed.createComponent(Ng2FloatBtnComponent);
@@ -207,4 +243,5 @@ describe('Ng2FloatBtnComponent', () => {
 
 		expect(comp.animateState).toBe('void');
 	}));
+
 });
