@@ -10,7 +10,7 @@ export class Ng2FloatBtnLiDirective implements OnInit {
     
     ngOnInit(){
         this.el.nativeElement.style.display = 'flex';
-        this.setJustifyContent("start");
+        this.setJustifyContent("flex-start");
         this.setDirection("column");        
     }
 
