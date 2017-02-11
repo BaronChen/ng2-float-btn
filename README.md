@@ -92,6 +92,7 @@ export class AppComponent {
 #### Type Definition
 
 Ng2FloatBtn
+
 | Property | Type | Description |
 | ------ | ------ | ------ |
 | color | string | The color of the button. Can be `primary`, `accent`, or `warn`([Reference](https://material.angular.io/components/component/button)) |
