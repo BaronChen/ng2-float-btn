@@ -1,0 +1,17 @@
+machine:
+  node:
+    version: 6.9.4
+
+dependencies:
+  pre:
+    - npm install:
+  cache_directories:
+    - /home/ubuntu/ng2-float-btn/node_modules
+
+compile:
+  override:
+    - npm run build
+          
+test:
+  override:
+    - npm test
