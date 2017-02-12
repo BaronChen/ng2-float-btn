@@ -26,7 +26,7 @@ import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 
-import { Ng2FloatBtnModule } from '../src'
+import { Ng2FloatBtnModule } from 'ng2-float-btn';
 
 @NgModule({
     imports: [ 
@@ -43,7 +43,7 @@ export class AppModule { }
 #### Example
 ```javascript
 import { Component } from '@angular/core';
-import { Ng2FloatBtnComponent, Ng2FloatBtn } from '../src';
+import { Ng2FloatBtnComponent, Ng2FloatBtn } from 'ng2-float-btn';
 
 @Component({
 	selector: 'test-app',
