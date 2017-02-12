@@ -1,6 +1,6 @@
 # Ng2-float-btn
 
-https://circleci.com/gh/BaronChen/ng2-float-btn/tree/master.svg?&style=shield&circle-token=e183368192080a061d355316972a82d4e3b7e796
+![alt tag](https://circleci.com/gh/BaronChen/ng2-float-btn/tree/master.svg?&style=shield&circle-token=e183368192080a061d355316972a82d4e3b7e796)
 
 ![alt tag](https://raw.githubusercontent.com/baronchen/ng2-float-btn/master/screenshot.gif)
 
