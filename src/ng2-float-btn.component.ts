@@ -102,21 +102,39 @@ export type BtnAnimateState = ('void' | 'right-show' | 'left-show' | 'up-show' |
 	//the two hidden button is used to trigger a render of material fab 
 	//so that the buttons with attribute binding will render correctly later
 	template: `
-		<button md-fab style="display: none"></button>
-		<button md-mini-fab style="display: none"></button>
 		<ul ng2-float-btn-direction [btnDirection]="direction">
-			<li>
-				<button [attr.md-fab]="isMini ? null : ''" [attr.md-mini-fab]="isMini ? '' : null"
-						(click)="triggerBtnMenu()">
-					<md-icon>{{mainButton.iconName}}</md-icon>
-				</button>	
+			<li [ngSwitch]="isMini">
+				<ng-container *ngSwitchCase="false">
+					<button md-fab [color]="mainButton.color"
+						(click)="triggerBtnMenu()" >
+						<md-icon>{{mainButton.iconName}}</md-icon>
+					</button>
+				</ng-container>
+				<ng-container *ngSwitchCase="true">
+					<button md-mini-fab [color]="mainButton.color"
+						(click)="triggerBtnMenu()" >
+						<md-icon>{{mainButton.iconName}}</md-icon>
+					</button>
+				</ng-container>
 			</li>
 			<li *ngFor="let btn of buttons" ng2-float-btn-li>
-				<button [attr.md-fab]="isMini ? null : ''" [attr.md-mini-fab]="isMini ? '' : null"
-					[@buttonAnimation]="animateState" *ngIf="showBtns"
-					(click)="fireAction($event, btn.onClick)">
-						<md-icon>{{btn.iconName}}</md-icon>
-				</button>
+				<ng-container [ngSwitch]="isMini">
+					<ng-container *ngSwitchCase="false">
+						<button md-fab [color]="btn.color"
+							[@buttonAnimation]="animateState" *ngIf="showBtns" 
+							(click)="fireAction($event, btn.onClick)">
+							<md-icon>{{btn.iconName}}</md-icon>
+						</button>
+					</ng-container>
+					<ng-container *ngSwitchCase="true">
+						<button md-mini-fab [color]="btn.color"
+							[@buttonAnimation]="animateState" *ngIf="showBtns" 
+							(click)="fireAction($event, btn.onClick)">
+							<md-icon>{{btn.iconName}}</md-icon>
+						</button>
+					</ng-container>
+				</ng-container>
+				
 				<label *ngIf="shouldShowLabel(btn.label) && showBtns" [@labelAnimation]="showBtns"
 						ng2-float-btn-label [isMini]="isMini">
 					{{btn.label}}

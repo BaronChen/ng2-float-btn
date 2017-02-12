@@ -81,9 +81,8 @@ describe('Ng2FloatBtnComponent', () => {
 		spyOn(comp, "triggerBtnMenu").and.callThrough();
 
 		let mainButtonEls = fixture.debugElement.queryAll(By.css('button'));
-		//need to include hidden button
-		expect(mainButtonEls.length).toBe(3);
-		let mainButtonEl = mainButtonEls[2];
+		expect(mainButtonEls.length).toBe(1);
+		let mainButtonEl = mainButtonEls[0];
 		expect(mainButtonEl.nativeElement.hasAttribute("md-fab")).toBe(true);
 		mainButtonEl.triggerEventHandler('click', null);
 		fixture.detectChanges();
@@ -92,7 +91,7 @@ describe('Ng2FloatBtnComponent', () => {
 		expect(comp.showBtns).toBe(true);
 
 		let buttonsEls = fixture.debugElement.queryAll(By.css('button'));
-		expect(buttonsEls.length).toBe(buttons.length + 3);
+		expect(buttonsEls.length).toBe(buttons.length + 1);
 		let buttonEl = buttonsEls[buttonsEls.length-1];
 		let iconEl = buttonEl.query(By.css('md-icon'));
 		expect(iconEl.nativeElement.textContent).toBe(buttons[buttons.length - 1].iconName);
@@ -118,8 +117,8 @@ describe('Ng2FloatBtnComponent', () => {
 
 		let mainButtonEls = fixture.debugElement.queryAll(By.css('button'));
 		//need to include hidden button
-		expect(mainButtonEls.length).toBe(3);
-		let mainButtonEl = mainButtonEls[2];
+		expect(mainButtonEls.length).toBe(1);
+		let mainButtonEl = mainButtonEls[0];
 		expect(mainButtonEl.nativeElement.hasAttribute("md-fab")).toBe(true);
 		mainButtonEl.triggerEventHandler('click', null);
 		fixture.detectChanges();
@@ -143,7 +142,7 @@ describe('Ng2FloatBtnComponent', () => {
 		fixture.detectChanges();
 
 		let mainButtonEls = fixture.debugElement.queryAll(By.css('button'));
-		let mainButtonEl = mainButtonEls[2];
+		let mainButtonEl = mainButtonEls[0];
 		mainButtonEl.triggerEventHandler('click', null);
 		fixture.detectChanges();
 
@@ -162,7 +161,7 @@ describe('Ng2FloatBtnComponent', () => {
 		fixture.detectChanges();
 
 		let mainButtonEls = fixture.debugElement.queryAll(By.css('button'));
-		let mainButtonEl = mainButtonEls[2];
+		let mainButtonEl = mainButtonEls[0];
 		expect(mainButtonEl.nativeElement.hasAttribute("md-mini-fab")).toBe(true);
 
 		let buttonsEls = fixture.debugElement.queryAll(By.css('button'));
@@ -180,7 +179,7 @@ describe('Ng2FloatBtnComponent', () => {
 		fixture.detectChanges();
 
 		let mainButtonEls = fixture.debugElement.queryAll(By.css('button'));
-		let mainButtonEl = mainButtonEls[2];
+		let mainButtonEl = mainButtonEls[0];
 		mainButtonEl.triggerEventHandler('click', null);
 		fixture.detectChanges();
 
@@ -202,7 +201,7 @@ describe('Ng2FloatBtnComponent', () => {
 		fixture.detectChanges();
 
 		let mainButtonEls = fixture.debugElement.queryAll(By.css('button'));
-		let mainButtonEl = mainButtonEls[2];
+		let mainButtonEl = mainButtonEls[0];
 		mainButtonEl.triggerEventHandler('click', null);
 		fixture.detectChanges();
 
@@ -225,7 +224,7 @@ describe('Ng2FloatBtnComponent', () => {
 		fixture.detectChanges();
 
 		let mainButtonEls = fixture.debugElement.queryAll(By.css('button'));
-		let mainButtonEl = mainButtonEls[2];
+		let mainButtonEl = mainButtonEls[0];
 		mainButtonEl.triggerEventHandler('click', null);
 		fixture.detectChanges();
 
@@ -248,7 +247,7 @@ describe('Ng2FloatBtnComponent', () => {
 		fixture.detectChanges();
 
 		let mainButtonEls = fixture.debugElement.queryAll(By.css('button'));
-		let mainButtonEl = mainButtonEls[2];
+		let mainButtonEl = mainButtonEls[0];
 		mainButtonEl.triggerEventHandler('click', null);
 		fixture.detectChanges();
 

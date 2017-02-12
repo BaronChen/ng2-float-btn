@@ -42,7 +42,7 @@ export class AppComponent {
 
 		this.buttons = [
 			{
-				color: "primary",
+				color: "accent",
 				iconName: "add",
 				onClick: () => {
 					alert("buton 1 clicked");
@@ -50,7 +50,7 @@ export class AppComponent {
 				label : "button 1"
 			},
 			{
-				color: "primary",
+				color: "warn",
 				iconName: "remove",
 				onClick: () => {
 					alert("buton 2 clicked");
