@@ -4,7 +4,7 @@ machine:
 
 dependencies:
   pre:
-    - npm install:
+    - npm install
   cache_directories:
     - /home/ubuntu/ng2-float-btn/node_modules
 
