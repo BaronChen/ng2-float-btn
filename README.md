@@ -106,7 +106,7 @@ Ng2FloatBtn
 | Attribute | Type | Description |
 | ------ | ------ | ------ |
 | mainButton | Ng2FloatBtn | The main button of the button group. `label` and `onClick` will be ignored. |
-| buttons | Array <Ng2FloatBtn> | The array of button of the collapsed button. | isMini | boolean | The flag to determine if the buttons should be mini-fab |
+| buttons | Array\<Ng2FloatBtn\> | The array of button of the collapsed button. | isMini | boolean | The flag to determine if the buttons should be mini-fab |
 | direction | string | The direction that the collapsed fab should expand to when the main button get clicked. Can be `right`, `left`, `up` and `down` |
 
 
